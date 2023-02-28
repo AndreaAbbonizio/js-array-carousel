@@ -45,7 +45,7 @@ topArrowElement.addEventListener("click", function () {
 
 bottomArrowElement.addEventListener("click", function () {
 
-    index++;
+    index--;
   
   
     
