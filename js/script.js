@@ -23,8 +23,24 @@ const images =["img/01.webp", "img/02.webp", "img/03.webp" , "img/04.webp" , "im
 const topArrowElement = document.getElementById("top-arrow");
 const bottomArrowElement = document.getElementById("bottom-arrow");
 const activeImgElement = document.getElementById("carousel-img");
+const asideContainerElement = document.getElementById("aside-container");
+
+
+for(let i = 1; i < images.length + 1 ; i++) {
+    // genero un elemento html di tag <div>
+    let newImage = document.createElement("img");
+    newImage.src = "img/0" + i + ".webp";
+    asideContainerElement.append(newImage);
+    newImage.classList.add("imageAside");
+
+    
+}
 
 let index = 0;
+
+const imageAsideElements = document.querySelectorAll(".imageAside");
+
+imageAsideElements[index].classList.add("active");
 
 activeImgElement.src = images[index];
 
@@ -35,12 +51,14 @@ topArrowElement.addEventListener("click", function () {
     }
 
     index++;
-  
-  
-    
+
     activeImgElement.src = images[index];
+
+    imageAsideElements[index].classList.add("active");
   
     console.log(index);
+
+    imageAsideElements[index - 1].classList.remove("active");
 
 });
 
@@ -50,12 +68,14 @@ bottomArrowElement.addEventListener("click", function () {
         index = 4 + 1;
     }
     index--;
-  
-  
+
+    imageAsideElements[index].classList.add("active");
+    
     
     activeImgElement.src = images[index];
   
     console.log(index)
   
+    imageAsideElements[index + 1].classList.remove("active");
 
 });
