@@ -30,6 +30,9 @@ activeImgElement.src = images[index];
 
 
 topArrowElement.addEventListener("click", function () {
+    if(index >= 4){
+        index = 0 - 1;
+    }
 
     index++;
   
@@ -37,14 +40,15 @@ topArrowElement.addEventListener("click", function () {
     
     activeImgElement.src = images[index];
   
-    console.log(index)
-  
+    console.log(index);
 
 });
 
 
 bottomArrowElement.addEventListener("click", function () {
-
+    if(index <= 0){
+        index = 4 + 1;
+    }
     index--;
   
   
