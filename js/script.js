@@ -9,7 +9,7 @@
 -> alla pressione del pulsante "top"
   ° aumentare il valore dell'indice di un'unità
   ° mostrare l'immagine alla posizione dell'array relativa al valore dell'indice
--> alla pressione del pulsante "sinistra"
+-> alla pressione del pulsante "bottom"
   ° diminuire il valore dell'indice di un'unità
   ° mostrare l'immagine alla posizione dell'array relativa al valore dell'indice
 */
@@ -32,6 +32,8 @@ for(let i = 1; i < images.length + 1 ; i++) {
     newImage.src = "img/0" + i + ".webp";
     asideContainerElement.append(newImage);
     newImage.classList.add("imageAside");
+    newImage.alt = "image aside";
+    newImage.style.height = `calc(100% / ${images.length}) `;
 
     
 }
@@ -46,28 +48,41 @@ activeImgElement.src = images[index];
 
 
 topArrowElement.addEventListener("click", function () {
-    if(index >= 4){
+
+    imageAsideElements[index].classList.remove("active");
+
+    
+    if(index == images.length - 1){
         index = 0 - 1;
+
     }
 
     index++;
 
     activeImgElement.src = images[index];
 
+
     imageAsideElements[index].classList.add("active");
   
     console.log(index);
 
-    imageAsideElements[index - 1].classList.remove("active");
+
+
 
 });
 
 
 bottomArrowElement.addEventListener("click", function () {
-    if(index <= 0){
-        index = 4 + 1;
+    imageAsideElements[index].classList.remove("active");
+
+
+    if(index == 0){
+        index = images.length - 1;
+    }else{
+        index--;
     }
-    index--;
+
+    
 
     imageAsideElements[index].classList.add("active");
     
@@ -76,6 +91,6 @@ bottomArrowElement.addEventListener("click", function () {
   
     console.log(index)
   
-    imageAsideElements[index + 1].classList.remove("active");
+   
 
 });
